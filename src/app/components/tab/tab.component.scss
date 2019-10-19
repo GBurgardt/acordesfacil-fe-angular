@@ -1,0 +1,17 @@
+::ng-deep .tab-container {
+    // background: #343a40;
+    > pre {
+        // border-left: 2px solid #343a40; 
+        // border-right: 2px solid #343a40; 
+        // padding-left: 15px;
+
+        margin: 3% 25%;
+        padding: 2%;
+        background: #343a40;
+        color: #fff;
+
+        > a {
+            font-weight: 520;
+        }
+    }
+}
