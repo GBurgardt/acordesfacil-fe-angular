@@ -15,6 +15,8 @@ color: #fff;
     padding-top: 6px;
     padding-bottom: 6px;
 
+  outline: none;
+
   &-1:hover {
     border-style: dashed;
   }
@@ -41,3 +43,9 @@ color: #fff;
   }
 }
 
+
+
+body {
+  // overflow: hidden;
+  margin: 0;
+}

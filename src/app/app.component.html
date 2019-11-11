@@ -1,1 +1,37 @@
-<router-outlet></router-outlet>
+
+<div class="home-container">
+
+    <div *ngIf="isMenuOpen" class="menu-container">
+    
+        <div *ngIf="!isLoggedIn" class="login-container">
+            <input 
+                placeholder="Nombre de usuario" 
+                type="text" 
+                [(ngModel)]="username"
+                />
+            <button 
+                class="btn btn-2 btn-transparent" 
+                (click)="onClickEntrar()">
+                Entrar
+            </button>
+        </div>
+    
+        <div *ngIf="isLoggedIn" class="favorites-container">
+            <ul>
+                <!-- <li (click)="onClickFavorite(fav)" *ngFor="let fav of favorites"> -->
+                <li (click)="onClickFavorite(fav)" *ngFor="let fav of localStorageService.getFavoritesAsync() | async">
+                    {{ fav.description }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div (click)="isMenuOpen = !isMenuOpen" class="btn-favorite">
+        <i class="fas fa-bookmark"></i>
+    </div>
+    
+    <div class="content-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+

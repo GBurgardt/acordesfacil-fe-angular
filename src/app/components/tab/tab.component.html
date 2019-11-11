@@ -1,5 +1,59 @@
 <div class="tab-container">
 
-    <pre [innerHtml]="tab"></pre>
+    <div class="btn-options-container btn-fav-container">
+        <i *ngIf="!isCurrentlyInFavs" (click)="addToFavorites()"  class="far fa-heart"></i>
+        <i *ngIf="isCurrentlyInFavs" (click)="removeToFavorites()" class="fas fa-heart"></i>
+    </div>
 
+    <div class="btn-options-container btn-tone-container">
+        <i (click)="onClickBackTone()" class="fas fa-minus"></i>
+        <span class="counter">
+            {{ toneTab }}
+        </span>        
+        <i (click)="onClickNextTone()" class="fas fa-plus"></i>
+    </div>
+
+    <div class="info-container">
+        <div>
+            {{ utilsService.getNombreByHref(href) }}
+        </div> 
+        <div>
+            VERSION: {{ nroTab }}
+        </div>
+    </div>
+    <div class="pre-container">
+        <pre *ngIf="tab" #preElement [innerHtml]="tab.pre"></pre>
+        <div *ngIf="!tab" class="spinner-div"></div>
+    </div>
+
+    <div *ngIf="cantTabsVersions && nroTab" class="actions-container">
+        <div *ngIf="isOptionsOpen"  class="options-container">
+            <ng-container *ngFor="let item of [].constructor(cantTabsVersions); let i = index">
+                <button 
+                    *ngIf="nroTab !== i + 1"
+                    class="btn btn-2 btn-transparent btn-nro-tab btn-option"
+                    (click)="
+                        getVersionHref(i)
+                    ">
+                    {{ i + 1 }}
+                </button>
+            </ng-container>
+        </div>
+        <button 
+            class="btn btn-2 btn-transparent btn-nro-tab" 
+            (click)="isOptionsOpen = !isOptionsOpen">
+            <!-- {{ nroTab }} -->
+            <span *ngIf="updateSpinner" class="fas fa-circle-notch fa-spin"></span>
+            <span *ngIf="!updateSpinner">{{ nroTab }}</span>
+        </button>
+    </div>
+
+    <div *ngIf="showChords" id="song-chords" class="chord-container">
+    </div>
 </div>
+
+<!-- <div *ngFor="let note of currentChord.split(' ')" class="note-chord">
+    {{ note }}
+</div> -->
+
+<!-- https://api.uberchord.com/v1/embed/chords/F#autosize -->

@@ -1,7 +1,23 @@
 <div class="home-container">
 
+    <div
+        (mouseenter)="isHelpOpen = !isHelpOpen" 
+        (mouseleave)="isHelpOpen = !isHelpOpen" 
+        class="help-container">
+        <span *ngIf="!isHelpOpen">
+            ?
+        </span>
+        <span style="font-size: .8rem" *ngIf="isHelpOpen">
+            ¡También podes buscar por álbum musical o por la letra de la canción!
+        </span>
+    </div>
     <div class="default-container input-container">
-        <input type="text" [(ngModel)]="search"/>
+        <input 
+            placeholder="Por ejemplo: 'justo que pensaba en vos nena'" 
+            type="text" 
+            [(ngModel)]="search"
+            (ngModelChange)="onInputChange($event)"
+            />
         <button 
             class="btn btn-2 btn-transparent" 
             (click)="onClickSearch()">

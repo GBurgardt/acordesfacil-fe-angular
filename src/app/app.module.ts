@@ -8,6 +8,7 @@ import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TabComponent } from './components/tab/tab.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    LocalStorageService
   ],
   bootstrap: [AppComponent]
 })
