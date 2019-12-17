@@ -8,7 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod && scp -i ~/amazon/gburgardt_gmail.pem -r ./dist/acordes-facil-fe-ng/ ubuntu@acordesfacil.tk:/home/ubuntu/"
+    "build:prod": "ng build --prod",
+    "deploy:old": "ng build --prod && scp -i ~/amazon/gburgardt_gmail.pem -r ./dist/acordes-facil-fe-ng/ ubuntu@acordesfacil.tk:/home/ubuntu/",
+    "clean:dist": "rm /home/burgardt/projects/sideprojects/acordesfacil/fe-acordesfacil/dist/*.* && cp /home/burgardt/projects/sideprojects/acordesfacil/fe-acordesfacil/dist/acordes-facil-fe-ng/* /home/burgardt/projects/sideprojects/acordesfacil/fe-acordesfacil/dist/ && firebase deploy",
+    "deploy": "ng build --prod && rm dist/*.* && cp dist/acordes-facil-fe-ng/* dist/ && firebase deploy"
   },
   "private": true,
   "dependencies": {

@@ -18,7 +18,6 @@
     
         <div *ngIf="isLoggedIn" class="favorites-container">
             <ul>
-                <!-- <li (click)="onClickFavorite(fav)" *ngFor="let fav of favorites"> -->
                 <li (click)="onClickFavorite(fav)" *ngFor="let fav of localStorageService.getFavoritesAsync() | async">
                     {{ fav.description }}
                 </li>
