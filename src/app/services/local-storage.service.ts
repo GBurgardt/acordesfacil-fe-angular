@@ -35,5 +35,11 @@ export class LocalStorageService {
     getFavoritesAsync = () => this.favoritesObservable;
     // listenFavorites = () => this.favoritesObservable.asObservable();
 
-    updateFavorites = (newFavorites: Favorite[]) => this.favoritesObservable.next(newFavorites);
+    updateFavorites = (newFavorites: Favorite[] | any[]) => 
+    { 
+        console.log("newFavorites")
+        console.log(newFavorites)
+        console.log("newFavorites")
+        this.favoritesObservable.next(newFavorites);
+    }
 }

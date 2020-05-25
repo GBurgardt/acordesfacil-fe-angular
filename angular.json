@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "acordes-facil-fe-ng"
+    }
+  },
+  "defaultProject": "acordes-facil-fe-ng",
+  "cli": {
+    "analytics": "64572814-03d8-4507-9cc9-f800280fa9cb"
+  }
 }

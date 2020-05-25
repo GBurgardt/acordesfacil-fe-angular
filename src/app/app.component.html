@@ -16,17 +16,52 @@
             </button>
         </div>
     
-        <div *ngIf="isLoggedIn" class="favorites-container">
+        <div *ngIf="isLoggedIn && favoritesMode === FavoritesModes.CANCIONES" class="favorites-container favorites-container-canciones">
             <ul>
                 <li (click)="onClickFavorite(fav)" *ngFor="let fav of localStorageService.getFavoritesAsync() | async">
                     {{ fav.description }}
                 </li>
             </ul>
         </div>
+
+        <div *ngIf="isLoggedIn && favoritesMode === FavoritesModes.ARTISTAS" class="favorites-container favorites-container-canciones">
+            <ul>
+                <li (click)="onClickFavorite(fav, FavoritesModes.ARTISTAS)" *ngFor="let fav of localStorageService.getFavoritesAsync() | async">
+                    <div class="">
+                        {{ fav.artist }}
+                    </div>
+
+                    <ul *ngIf="fav.menuOpen">
+                        <li (click)="onClickFavorite(song)" *ngFor="let song of fav.songs">
+                            {{ 
+                                song.description
+                                    .substring(
+                                        song.description.indexOf(',') + 1
+                                    ) 
+                            }}
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <div (click)="isMenuOpen = !isMenuOpen" class="btn-favorite">
-        <i class="fas fa-bookmark"></i>
+    <div class="btn-favorite">
+        <i (click)="isMenuOpen = !isMenuOpen" class="fas fa-bookmark"></i>
+        
+        <i 
+            (click)="changeFavoriteMode()" 
+            *ngIf="isMenuOpen && favoritesMode === FavoritesModes.CANCIONES" 
+            [ngStyle]="{'margin-top': '7px', 'font-size': '2rem'}" 
+            class="fas fa-indent">
+        </i>
+        <i 
+            (click)="changeFavoriteMode()" 
+            *ngIf="isMenuOpen && favoritesMode === FavoritesModes.ARTISTAS" 
+            [ngStyle]="{'margin-top': '7px', 'font-size': '2rem'}" 
+            class="fas fa-bars">
+        </i>
     </div>
     
     <div class="content-container">

@@ -17,11 +17,14 @@
         color: #343a40;
         margin-left: 5px;
         cursor: pointer;
+
+        display: flex;
+        flex-direction: column;
     }
 
 
     .menu-container {
-        min-width: 18%;
+        min-width: 27%;
         font-size: .9rem;
         margin-top: 2px;
         z-index: 1;
@@ -46,6 +49,49 @@
                 > li:nth-child(even) {
                     color: #343a40;
                     background: #fff;
+                }
+            }
+        }
+
+
+        .favorites-container-canciones > ul {
+            > li {
+                display: flex;
+                flex-direction: column;
+
+                > ul {
+                    list-style: none;
+                    padding-left: 0;
+                    margin: 7px 0px;
+
+                    // > :first-child {
+                    //     border-top: solid 2px #343a40;
+                    // }
+
+                    // > :last-child {
+                    //     border-bottom: solid 2px #343a40;
+                    // }
+
+                    font-size: .7rem;
+                    > li {
+                        cursor: pointer;
+                        
+                        display: flex;
+                        justify-content: space-between;
+                        font-weight: 600;
+                        padding: 5px 6px;
+
+                        color: #343a40;
+                        background: #fff;
+
+                        
+                        // border-left: solid 2px #343a40;
+                        // border-right: solid 2px #343a40;
+                    }
+                    > li:nth-child(even) {
+                        background: #343a40;
+                        color: #fff;
+                    }
                 }
             }
         }
