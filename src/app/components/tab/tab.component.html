@@ -13,14 +13,14 @@
         <i (click)="onClickNextTone()" class="fas fa-plus"></i>
     </div>
 
-    <div class="info-container">
+    <!-- <div class="info-container">
         <div>
             {{ utilsService.getNombreByHref(href) }}
         </div> 
         <div>
             VERSION: {{ nroTab }}
         </div>
-    </div>
+    </div> -->
     <div class="pre-container">
         <pre *ngIf="tab" #preElement [innerHtml]="tab.pre"></pre>
         <div *ngIf="!tab" class="spinner-div"></div>
